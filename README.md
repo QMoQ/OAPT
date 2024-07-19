@@ -3,9 +3,8 @@
 
 Kuaishou Techonology, UESTC
 
-'''
-Official implement of OAPT in ECCV2024, which is a transformer-based network deigned for double (or multiple) compressed image restoration.
-'''
+>Official implement of OAPT in ECCV2024, which is a transformer-based network deigned for double (or multiple) compressed image restoration.
+
 
 ---
 
