@@ -11,6 +11,7 @@ Kuaishou Techonology, UESTC
 
 
 # TODO List
+- [ ] Submit to ARXIV
 - [ ] Release main codes of models
 - [ ] Release test codes
 - [ ] Release training codes
