@@ -1,10 +1,11 @@
-# OAPT: Offset-Aware Partition Transformer for Double JPEG Artifacts Removal [ARXIV](https://arxiv.org/abs/2408.11480)
+# OAPT: Offset-Aware Partition Transformer for Double JPEG Artifacts Removal 
 [Qiao Mo](), [Yukang Ding](), [Jinhua Hao](), [Qiang Zhu](), [Ming Sun](), [Chao Zhou](), [Feiyu Chen](), [Shuyuan Zhu]()
 
 Kuaishou Techonology, UESTC
 
 >Official implement of OAPT in ECCV2024, which is a transformer-based network deigned for double (or multiple) compressed image restoration.
 
+[Arvix](https://arxiv.org/abs/2408.11480)
 
 ---
 
