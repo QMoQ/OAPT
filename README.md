@@ -1,4 +1,4 @@
-# OAPT: Offset-Aware Partition Transformer for Double JPEG Artifacts Removal
+# OAPT: Offset-Aware Partition Transformer for Double JPEG Artifacts Removal [ARXIV](https://arxiv.org/abs/2408.11480)
 [Qiao Mo](), [Yukang Ding](), [Jinhua Hao](), [Qiang Zhu](), [Ming Sun](), [Chao Zhou](), [Feiyu Chen](), [Shuyuan Zhu]()
 
 Kuaishou Techonology, UESTC
