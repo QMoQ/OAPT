@@ -21,8 +21,7 @@ Kuaishou Techonology, UESTC
 This project is mainly based on [swinir](https://github.com/JingyunLiang/SwinIR) and [hat](https://github.com/XPixelGroup/HAT).
 
 ---
-### Network Structure
-<img src="./pics/gray_visuals.pdf" width="600"/>
+
 
 
 ### Training details
