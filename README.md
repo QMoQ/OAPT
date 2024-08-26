@@ -22,7 +22,7 @@ This project is mainly based on [swinir](https://github.com/JingyunLiang/SwinIR)
 
 ---
 ### Network Structure
-<img src="./pics/pipeline.pdf" width="600"/>
+<img src="./pics/gray_visuals.pdf" width="600"/>
 
 
 ### Training details
