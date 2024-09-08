@@ -21,8 +21,8 @@ Kuaishou Techonology, UESTC
 This project is mainly based on [swinir](https://github.com/JingyunLiang/SwinIR) and [hat](https://github.com/XPixelGroup/HAT).
 
 ---
-### Arckitecture
-![architecture](https://github.com/QMoQ/OAPT/blob/main/pics/pipeline.pdf)
+### Architecture
+![architecture](https://github.com/QMoQ/OAPT/blob/main/pics/gray_results.png)
 
 
 ### Training details
