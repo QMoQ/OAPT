@@ -23,15 +23,16 @@ This project is mainly based on [swinir](https://github.com/JingyunLiang/SwinIR)
 ---
 
 ### Architecture
-
+![architecture](https://github.com/QMoQ/OAPT/blob/main/pics/pipeline.png)
 
 ### Pattern clustering & inv operation 
+![pattern clustering](https://github.com/QMoQ/OAPT/blob/main/pics/patternclustering.png)
 
 ### Experimental results on gray double JPEG images
-![architecture](https://github.com/QMoQ/OAPT/blob/main/pics/gray_results.png)
+![results](https://github.com/QMoQ/OAPT/blob/main/pics/gray_results.png)
 
 ### Visual results
-
+![gray visual results](https://github.com/QMoQ/OAPT/blob/main/pics/visuals.png)
 
 
 ### Training details
