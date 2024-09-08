@@ -21,8 +21,17 @@ Kuaishou Techonology, UESTC
 This project is mainly based on [swinir](https://github.com/JingyunLiang/SwinIR) and [hat](https://github.com/XPixelGroup/HAT).
 
 ---
+
 ### Architecture
+
+
+### Pattern clustering & inv operation 
+
+### Experimental results on gray double JPEG images
 ![architecture](https://github.com/QMoQ/OAPT/blob/main/pics/gray_results.png)
+
+### Visual results
+
 
 
 ### Training details
