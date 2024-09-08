@@ -36,14 +36,15 @@ This project is mainly based on [swinir](https://github.com/JingyunLiang/SwinIR)
 
 
 ### Training details
-<div style="text-align:center">
+
 | Model(Gray) | Params(M) | Multi-Adds(G) | TrainingSets | Pretrain model | iterations |
 |--------|:---------:|:---------:|:---------:|:---------:|:---------:|
 | [SwinIR](https://github.com/JingyunLiang/SwinIR) |   11.49    | 293.42 | DF2K | 006_CAR_DFWB_s126w7_SwinIR-M_jpeg10 | 200k |
 | [HAT-S](https://github.com/XPixelGroup/HAT) |   9.24    | 227.14 | DF2K | HAT-S_SRx2 | 800k |
 | [ART](https://github.com/gladzhang/ART) |   16.14    | 415.51 | DF2K | CAR_ART_q10 | 200k |
 | [OAPT](https://arxiv.org/abs/2408.11480) |   12.96    | 293.60 | DF2K | 006_CAR_DFWB_s126w7_SwinIR-M_jpeg10 | 200k |
-</div>
+
+
 
 
 
