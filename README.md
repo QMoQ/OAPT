@@ -22,7 +22,7 @@ This project is mainly based on [swinir](https://github.com/JingyunLiang/SwinIR)
 
 ---
 ### Arckitecture
-![architecture](./pics/pipeline.pdf)
+![architecture](https://github.com/QMoQ/OAPT/blob/main/pics/pipeline.pdf)
 
 
 ### Training details
