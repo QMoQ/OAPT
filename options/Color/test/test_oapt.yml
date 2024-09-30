@@ -1,0 +1,73 @@
+# python oapt/test.py -opt options/Color/test/test_oapt.yml
+name: test_OAPT_color
+model_type: OAPT_ModelB
+scale: 1
+num_gpu: 1
+manual_seed: 0
+
+
+tile: # use the tile mode for limited GPU memory when testing.
+  tile_size: 224 # the higher, the more utilized GPU memory and the less performance change against the full image. must be an integer multiple of the window size.
+  tile_pad: 16 # overlapping between adjacency patches.must be an integer multiple of the window size.
+
+
+datasets:
+  test_1:
+    name: BSDS500_3050
+    type: DoubleJpegImageDataset
+    dataroot_gt: ./dataset/BSDS500/test
+    dataroot_lq: ./dataset/BSDS500/test
+    io_backend:
+      type: disk
+
+    num_channels: 3
+    # color: y
+    quality_factor: 30
+    double_compression: true
+    second_qfs: 50 
+    shift_w: 4
+    shift_h: 4
+  
+
+# network structures
+network_g:
+  type: OAPT
+  predictor_type: resnet18_small
+  upscale: 1
+  in_chans: 3
+  img_size: 224
+  window_size: 7
+  DenseFirstPositions: True
+  mode: 'non-interval'
+  img_range: 255.
+  depths: [6, 6, 6, 6, 6, 6]
+  embed_dim: 180
+  num_heads: [6, 6, 6, 6, 6, 6]
+  mlp_ratio: 2
+  upsampler: ''
+  resi_connection: '1conv'
+  offset_range: 7
+
+
+
+# path
+path:
+  pretrain_network_g: models_zoo/non_aligned/OAPT_color_non_aligned.pth
+  strict_load_g: true
+  param_key_g: 'params_ema'
+
+# validation settings
+val:
+  save_img: false
+  suffix: ~  # add suffix to saved images, if None, use exp name
+  pbar: True
+
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: False
+    ssim:
+      type: calculate_ssim
+      crop_border: 0
+      test_y_channel: False

@@ -1,0 +1,155 @@
+# CUDA_VISIBLE_DEVICES=2,3 python -m torch.distributed.launch --nproc_per_node=4 --master_port=111 hat/train.py -opt options/Gray/train/train_hat_offset.yml --launcher pytorch
+name: train_HAT_offset
+model_type: MYModel
+scale: 1
+num_gpu: auto
+manual_seed: 0
+
+
+tile: # use the tile mode for limited GPU memory when testing.
+  tile_size: 160 # the higher, the more utilized GPU memory and the less performance change against the full image. must be an integer multiple of the window size.
+  tile_pad: 16 # overlapping between adjacency patches.must be an integer multiple of the window size.
+
+
+
+# dataset and data loader settings
+datasets:
+  train:
+    name: DF2K
+    type: DoubleJpegImageDataset
+    multi_dataroot:
+      div2k:
+        dataroot_gt: ./dataset/DIV2K/DIV2K_train_HR
+        dataroot_lq: ./dataset/DIV2K/DIV2K_train_HR
+      flickr:
+        dataroot_gt: ./dataset/Flickr2K/Flickr2K_HR
+        dataroot_lq: ./dataset/Flickr2K/Flickr2K_HR
+ 
+
+    # meta_info_file: hat/data/meta_info/meta_info_DF2Ksub_GT.txt
+    io_backend:
+      type: disk
+
+    # quality_factor: 10
+    double_compression: True #二次压缩
+    # QF2lessthanQF1: True
+    shift_range: [0,7]
+    # second_qfs: [10] #二次压缩qf
+    # shift_w: 0 # 压缩平移，针对非对齐
+    # shift_h: 0 # 压缩平移，针对非对齐
+    # random_chop_for_8x8: True # 在切片的时候保持8x8的顶点，无关紧要
+
+    num_channels: 1 #与下面net_g的inchannel保持一致
+    color: y
+    gt_size: 160 # 96 
+    use_hflip: true
+    use_rot: true
+
+    # data loader
+    use_shuffle: true
+    num_worker_per_gpu: 8
+    batch_size_per_gpu: 1
+    dataset_enlarge_ratio: 1
+    prefetch_mode: ~
+    # prefetch_mode: cuda
+    # pin_memory: true
+
+
+
+  val_1:
+    name: Live1_1030_4
+    type: DoubleJpegImageDataset
+    dataroot_gt: ./dataset/LIVE1
+    dataroot_lq: ./dataset/LIVE1
+    io_backend:
+      type: disk
+    num_channels: 1
+    color: y
+    quality_factor: 10
+    double_compression: True 
+    second_qfs: 30 
+    shift_w: 4 
+    shift_h: 4 
+
+
+# network structures
+network_g:
+  type: HAT_Offset
+  upscale: 1
+  in_chans: 1
+  img_size: 64
+  window_size: 16
+  compress_ratio: 24
+  squeeze_factor: 24
+  conv_scale: 0.01
+  overlap_ratio: 0.5
+  img_range: 1.
+  depths: [6, 6, 6, 6, 6, 6]
+  embed_dim: 144
+  num_heads: [6, 6, 6, 6, 6, 6]
+  mlp_ratio: 2
+  upsampler: '.'
+  resi_connection: '1conv'
+  hab_offset: False
+  ocab_offset: True
+
+# path
+path:
+  pretrain_network_g: ~
+  strict_load_g: False
+  resume_state: ~
+
+# training settings
+train:
+  ema_decay: 0.999
+  optim_g:
+    type: Adam
+    lr: !!float 2e-4
+    weight_decay: 0
+    betas: [0.9, 0.99]
+
+  scheduler:
+    type: MultiStepLR
+    milestones: [100000, 200000, 250000, 350000]
+    gamma: 0.5
+
+  total_iter: 400000
+  warmup_iter: -1  # no warm up
+
+  # losses
+  pixel_opt:
+    type: L1Loss
+    loss_weight: 1.0
+    reduction: mean
+
+# validation settings
+val:
+  val_freq: !!float 5e3
+  save_img: false
+  pbar: False
+
+  metrics:
+    psnr:
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: true
+      better: higher  # the higher, the better. Default: higher
+    ssim:
+      type: calculate_ssim
+      crop_border: 0
+      test_y_channel: true
+      better: higher  # the higher, the better. Default: higher
+
+# logging settings
+logger:
+  print_freq: 1000
+  save_checkpoint_freq: !!float 5e3
+  use_tb_logger: true
+  wandb:
+    project: ~
+    resume_id: ~
+
+# dist training settings
+dist_params:
+  backend: nccl
+  port: 29500
