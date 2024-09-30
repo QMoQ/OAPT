@@ -48,14 +48,19 @@ UESTC, Kuaishou Techonology
 This project is mainly based on [swinir](https://github.com/JingyunLiang/SwinIR) and [hat](https://github.com/XPixelGroup/HAT). 
 
 The version of PyTorch we used is 1.7.0.
-'''
+```
 pip install -r requirements.txt
 python setup.py develop
-'''
+```
 
 ### Test
-'''
+```
 CUDA_VISIBLE_DEVICES=0 python oapt/test.py -opt ./options/Gray/test/test_oapt.yml
-'''
+```
+
+### Train
+```
+CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 --master_port=73 hat/train.py -opt options/Gray/train/train_oapt.yml --launcher pytorch
+```
 
 
