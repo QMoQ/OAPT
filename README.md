@@ -18,7 +18,7 @@ UESTC, Kuaishou Techonology
 - [ ] Release training codes
 
 
-This project is mainly based on [swinir](https://github.com/JingyunLiang/SwinIR) and [hat](https://github.com/XPixelGroup/HAT).
+
 
 ---
 
@@ -43,3 +43,19 @@ This project is mainly based on [swinir](https://github.com/JingyunLiang/SwinIR)
 | [HAT-S](https://github.com/XPixelGroup/HAT) |   9.24    | 227.14 | DF2K | HAT-S_SRx2 | 800k |
 | [ART](https://github.com/gladzhang/ART) |   16.14    | 415.51 | DF2K | CAR_ART_q10 | 200k |
 | [OAPT](https://arxiv.org/abs/2408.11480) |   12.96    | 293.60 | DF2K | 006_CAR_DFWB_s126w7_SwinIR-M_jpeg10 | 200k |
+
+### Setup
+This project is mainly based on [swinir](https://github.com/JingyunLiang/SwinIR) and [hat](https://github.com/XPixelGroup/HAT). 
+
+The version of PyTorch we used is 1.7.0.
+'''
+pip install -r requirements.txt
+python setup.py develop
+'''
+
+### Test
+'''
+CUDA_VISIBLE_DEVICES=0 python oapt/test.py -opt ./options/Gray/test/test_oapt.yml
+'''
+
+
