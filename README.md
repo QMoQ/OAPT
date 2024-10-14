@@ -45,7 +45,7 @@ UESTC, Kuaishou Techonology
 | [OAPT](https://arxiv.org/abs/2408.11480) |   12.96    | 293.60 | DF2K | 006_CAR_DFWB_s126w7_SwinIR-M_jpeg10 | 200k |
 
 ### Setup
-This project is mainly based on [swinir](https://github.com/JingyunLiang/SwinIR) and [hat](https://github.com/XPixelGroup/HAT). 
+This project is mainly based on [swinir](https://github.com/JingyunLiang/SwinIR) and [hat](https://github.com/XPixelGroup/HAT). All the weights are put in ['pretrain_weights'](https://pan.baidu.com/s/1CAXtSt9oEcBHp8zqCBnrzg?pwd=hm52)
 
 The version of PyTorch we used is 1.7.0.
 ```
